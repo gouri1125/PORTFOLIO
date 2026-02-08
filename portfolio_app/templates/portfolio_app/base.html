@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gouri's Portfolio{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'portfolio_app/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader">
+    <div class="loader-spinner"></div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+
+        <a href="{% url 'portfolio_app:home' %}" class="nav-logo">
+            <i class="fas fa-award"></i>
+        </a>
+
+        <a href="{% url 'portfolio_app:home' %}" class="nav-home-btn">
+            <i class="fas fa-home"></i> Home
+        </a>
+
+        <ul class="nav-menu" id="nav-menu">
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'portfolio_app:skills' %}" class="nav-link">Skills</a></li>
+                <li><a href="{% url 'portfolio_app:projects' %}" class="nav-link">Projects</a></li>
+            {% endif %}
+        </ul>
+
+        <div class="nav-auth">
+            {% if user.is_superuser %}
+               <a href="{% url 'portfolio_app:dashboard' %}">Admin Dashboard</a>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+                <span>Hi, {{ user.first_name|default:user.username }}</span>
+                <a href="{% url 'portfolio_app:logout' %}" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            {% else %}
+                <a href="{% url 'portfolio_app:login' %}" class="btn-login">Login</a>
+            {% endif %}
+        </div>
+
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+
+    </div>
+</nav>
+
+<!-- ✅ MAIN CONTENT BLOCK (CRITICAL FIX) -->
+<main style="margin-top: 90px;">
+    {% block content %}{% endblock %}
+</main>
+
+<script src="{% static 'portfolio_app/js/main.js' %}"></script>
+</body>
+</html>

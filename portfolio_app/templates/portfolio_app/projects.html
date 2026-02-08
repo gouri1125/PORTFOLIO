@@ -1,0 +1,23 @@
+{% extends 'portfolio_app/base.html' %}
+{% load static %}
+
+{% block title %}Projects - Gouri{% endblock %}
+
+{% block content %}
+<section class="section" style="min-height: 80vh;">
+    <div class="container">
+        <h1>Data Analytics Projects</h1>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image"><i class="fas fa-seedling"></i></div>
+                <div class="project-content">
+                    <h3>Iris Dataset Analysis</h3>
+                    <p>EDA + Visualization with Python</p>
+                    <a href="https://github.com/gouri1125/iris-analysis" class="btn-gradient">GitHub</a>
+                </div>
+            </div>
+            <!-- More projects... -->
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'portfolio_app/base.html' %}
+{% load static %}
+
+{% block title %}Skills - Gouri{% endblock %}
+
+{% block content %}
+<section class="section" style="min-height: 80vh;">
+    <div class="container">
+        <h1>My Technical Skills</h1>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-name"><i class="fas fa-database"></i> SQL & Database <span>90%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width:90%"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name"><i class="fab fa-python"></i> Python (Pandas) <span>85%</span></div>
+                <div class="skill-bar"><div class="skill-progress" style="width:85%"></div></div>
+            </div>
+            <!-- Add more skills... -->
+        </div>
+    </div>
+</section>
+{% endblock %}

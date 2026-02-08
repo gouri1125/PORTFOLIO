@@ -1,0 +1,44 @@
+{% extends 'portfolio_app/base.html' %}
+{% load static %}
+
+{% block title %}Contact - Gouri{% endblock %}
+
+{% block content %}
+<section class="contact-page">
+    <div class="container">
+        <div class="back-btn">
+            <a href="{% url 'portfolio_app:home' %}"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+        
+        <h1>Get In Touch</h1>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p><strong>📍 Location:</strong> Thiruvananthapuram, Kerala, India</p>
+                <p><strong>📧 Email:</strong> gouri@example.com</p>
+                <p><strong>🌐 GitHub:</strong> <a href="https://github.com/gouri1125" target="_blank">github.com/gouri1125</a></p>
+            </div>
+            
+            <form method="post" action="{% url 'portfolio_app:contact' %}" class="contact-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Full Name" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Reason for Message..." rows="5" required></textarea>
+                    <i class="fas fa-comment"></i>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

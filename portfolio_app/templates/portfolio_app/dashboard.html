@@ -1,0 +1,80 @@
+{% extends 'portfolio_app/base.html' %}
+{% load static %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard section fade-in">
+
+    <h1>
+        <i class="fas fa-user-shield"></i> Admin Dashboard
+    </h1>
+    <p class="subtitle">Portfolio overview & site activity</p>
+
+    <!-- ================= STATS ================= -->
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-number">{{ projects_count }}</div>
+            <p>Total Projects</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">{{ skills_count }}</div>
+            <p>Total Skills</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">{{ user_count }}</div>
+            <p>Registered Users</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">{{ messages_count }}</div>
+            <p>Unread Messages</p>
+        </div>
+
+    </div>
+
+    <!-- ================= PROJECTS ================= -->
+    <div class="dashboard-card">
+        <h2><i class="fas fa-folder"></i> Projects</h2>
+
+        <ul class="dashboard-list">
+        {% for project in projects %}
+            <li>
+                <strong>{{ project.title }}</strong><br>
+                <small>{{ project.technologies }}</small>
+            </li>
+        {% empty %}
+            <li>No projects added yet.</li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <!-- ================= SKILLS ================= -->
+    <div class="dashboard-card">
+        <h2><i class="fas fa-code"></i> Skills</h2>
+
+        <ul class="dashboard-list">
+        {% for skill in skills %}
+            <li>
+                {{ skill.name }} — {{ skill.percentage }}%
+            </li>
+        {% empty %}
+            <li>No skills added yet.</li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <!-- ================= ADMIN ACTIONS ================= -->
+    <div class="dashboard-card">
+        <h2><i class="fas fa-tools"></i> Admin Actions</h2>
+
+        <a href="/admin/" class="btn-gradient">
+            <i class="fas fa-cog"></i> Open Django Admin
+        </a>
+    </div>
+
+</section>
+{% endblock %}
