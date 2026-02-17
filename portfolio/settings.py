@@ -67,18 +67,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Static files (for development)
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+      # ← Logout → homepage
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    ...
-]
- 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # must be directly after security
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -86,6 +81,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 #ROOT_URLCONF = 'portfolio.urls'
 
@@ -157,7 +153,3 @@ USE_TZ = True
 # AUTHENTICATION REDIRECTS
 LOGIN_REDIRECT_URL = '/dashboard/'      # ← ALL logins → dashboard
 LOGOUT_REDIRECT_URL = '/'        
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-      # ← Logout → home
-
